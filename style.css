@@ -1,0 +1,236 @@
+/* Сброс и базовые стили */
+body {
+  margin: 0;
+  overflow: hidden;
+  height: 100vh;
+  font-family: 'Antonio', sans-serif;
+  background: #101010;
+  color: white;
+  animation: fadeIn 2s ease-in-out forwards;
+  opacity: 0; /* Начинаем с прозрачности */
+}
+
+/* Навигация проектов слева сверху вертикально */
+.nav-projects {
+  position: absolute;
+  top: 90px;
+  left: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-projects a {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #aaa;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.nav-projects a:hover {
+  color: white;
+  text-shadow: 0 0 10px white;
+}
+
+/* Заголовок по центру */
+h1 {
+  font-family: 'Teko', sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 3em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 0 0 10px white;
+  animation: fadeIn 2s ease-in-out;
+
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+/* Центрированный контент */
+#overlay {
+  position: absolute;
+  z-index: 2;
+  top: 60%; /* подьем фото */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  pointer-events: none;
+}
+
+#overlay img,
+#overlay .contact {
+  pointer-events: auto;
+}
+
+/* Фото */
+#photo {
+  width: 400px;
+  margin-top: 5px;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+  max-width: 90%;
+}
+
+/* Email */
+.contact {
+  margin-top: 20px;
+  font-size: 1em;
+  color: #aaa;
+}
+
+.contact a {
+  color: #888;
+  text-decoration: none;
+}
+
+.contact a:hover {
+  color: white;
+  text-shadow: 0 0 10px white;
+}
+
+.contact {
+  animation: fadeIn 2s ease-in-out forwards;
+  opacity: 0;
+  animation-delay: 0.5s; /* Можно добавить задержку для плавности */
+}
+
+.copyright {
+  font-size: 0.1em;
+  color: #aaa;
+  text-transform: uppercase;
+  margin-top: 10px;
+  letter-spacing: 0.05em;
+}
+
+/* Музыкальные ссылки справа снизу */
+.music-links {
+  position: absolute;
+  left: 80px;
+  bottom: 110px; /* приблизительно на уровне нижнего края фото */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.music-link {
+  font-size: 1.2em;
+  color: #888;
+  text-decoration: none;
+  line-height: 1.1;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.music-link:hover {
+  color: white;
+  text-shadow: 0 0 10px white;
+}
+
+.music-link {
+  animation: fadeIn 2s ease-in-out forwards;
+  opacity: 0;
+  animation-delay: 0.5s; /* Можно добавить задержку для плавности */
+}
+
+/* Фоновый шум */
+.noise {
+  pointer-events: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+  opacity: 0.06;
+  z-index: 1;
+}
+
+/* Анимация */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+                                          /* Мобилка */
+@media (max-width: 600px) {
+  body {
+    overflow: auto;
+    height: auto;
+  }
+
+  .nav-projects {
+    top: 20px;
+    left: 20px;
+  }
+
+  .nav-projects a {
+    font-size: 1.2em;
+  }
+
+  h1 {
+    font-size: 2em;
+    top: 10%;
+    transform: translate(-50%, -50%);
+    padding: 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90vw;
+  }
+
+  /* Сделаем #overlay позиционирование относительным, ширина по контенту и центрируем */
+  #overlay {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 90%;
+    max-width: 320px;
+    margin: 0 auto;
+    text-align: center;
+    pointer-events: auto;
+  }
+
+  #photo {
+    width: 100%;
+    max-width: 320px;
+    margin-top: 10px;
+  }
+
+  .contact {
+    font-size: 0.9em;
+    margin-top: 15px;
+  }
+
+  .music-links {
+    position: static;
+    margin: 20px auto 40px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    left: auto;
+    bottom: auto;
+  }
+
+  .music-link {
+    font-size: 1em;
+    line-height: 1.2;
+    white-space: normal;
+  }
+
+  .copyright {
+    font-size: 0.7em;
+    margin-top: 5px;
+    color: #888;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: -10px;
+  }
+}
