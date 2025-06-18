@@ -13,11 +13,11 @@
     let windowHalfY = window.innerHeight / 2;
 
     const textureLoader = new THREE.TextureLoader();
-    const sprite1 = textureLoader.load('js/snowflake1.png');
+    const sprite1 = textureLoader.load('/js/snowflake1.png');
     // const sprite2 = textureLoader.load('js/snowflake2.png'); // не используется
-    const sprite3 = textureLoader.load('js/snowflake3.png');
-    const sprite4 = textureLoader.load('js/snowflake4.png');
-    const sprite5 = textureLoader.load('js/snowflake5.png');
+    const sprite3 = textureLoader.load('/js/snowflake3.png');
+    const sprite4 = textureLoader.load('/js/snowflake4.png');
+    const sprite5 = textureLoader.load('/js/snowflake5.png');
 
     // Настройка снежинок: цвет (начальный, но будет перезаписан), спрайт и размер
     const parameters = [

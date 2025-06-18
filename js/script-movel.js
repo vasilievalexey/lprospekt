@@ -23,7 +23,7 @@ function init() {
   document.body.appendChild(renderer.domElement);
 
   const loader = new THREE.TextureLoader();
-  const texture = loader.load('js/sprite.png');
+  const texture = loader.load('/js/sprite.png');
 
   const material = new THREE.SpriteMaterial({ map: texture, transparent: true });
 
