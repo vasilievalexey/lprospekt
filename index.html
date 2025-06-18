@@ -7,39 +7,39 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Antonio&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap" rel="stylesheet" />
-  <link rel="icon" href="lprospektFavicon.ico" type="image/x-icon" />
+  <link rel="icon" href="icons/lprospektFavicon.ico" type="image/x-icon" />
 </head>
-<body>
-
+<body class="page-lprospekt">
+  <!-- Фоновое видео, canvas или JS-анимация -->
+  <div id="background"></div>
 <!-- Проекты -->
+ <div class="header-block">
+  <h1 class="logo">L PROSPEKT</h1>
 <nav class="nav-projects">
-  <a href="/project1.html">SEPIIA</a>
-  <a href="/project2.html">M O V E L</a>
+  <a href="index-sepiia.html">SEPIIA</a>
+  <a href="index-movel.html">M O V E L</a>
 </nav>
-
-<!-- Заголовок по центру -->
-<h1>L PROSPEKT</h1>
-
+</div>
 <!-- Центрированный контент -->
 <div id="overlay">
-  <img id="photo" src="L_PROSPEKT_2014_album.jpg" alt="2014 Album Photo" draggable="false" />
+  <img id="photo" src="img/L_PROSPEKT_2014_album.jpg" alt="Обложка альбома L PROSPEKT 2014" draggable="false" />
   <p class="contact"><a href="mailto:contact@lprospekt.com">contact@lprospekt.com</a></p>
-  <p class="copyright">© 2025 L PROSPEKT. All rights reserved.</p>
+  <p class="copyright">© 2025 L PROSPEKT. All rights reserved</p>
 </div>
 
 <!-- Музыкальные ссылки -->
 <div class="music-links">
-  <a class="music-link" href="https://music.apple.com/" target="_blank">Apple Music</a>
-  <a class="music-link" href="https://open.spotify.com/" target="_blank">Spotify</a>
-  <a class="music-link" href="https://soundcloud.com/" target="_blank">SoundCloud</a>
-  <a class="music-link" href="https://music.yandex.ru/artist/24268251" target="_blank">Yandex Music</a>
-  <a class="music-link" href="https://vk.com/lprospekt" target="_blank">VK</a>
+  <a class="music-link" href="https://music.apple.com/" target="_blank" rel="noopener noreferrer">Apple Music</a>
+  <a class="music-link" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer">Spotify</a>
+  <a class="music-link" href="https://soundcloud.com/" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+  <a class="music-link" href="https://music.yandex.ru/artist/24268251" target="_blank" rel="noopener noreferrer">Yandex Music</a>
+  <a class="music-link" href="https://vk.com/lprospekt" target="_blank" rel="noopener noreferrer">VK</a>
 </div>
 
   <!-- Фоновый шум -->
   <div class="noise"></div>
 
-  <script src="three.min.js"></script>
-  <script src="script.js"></script>
+  <script src="js/three.min.js"></script>
+  <script src="js/script-lprospekt.js"></script>
 </body>
 </html>

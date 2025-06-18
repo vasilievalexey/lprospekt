@@ -1,16 +1,44 @@
-/* Сброс и базовые стили */
+/* === ОБЩИЕ НАСТРОЙКИ === */
 body {
   margin: 0;
   overflow: hidden;
   height: 100vh;
-  font-family: 'Antonio', sans-serif;
-  background: #101010;
   color: white;
+  font-family: 'Antonio', sans-serif;
   animation: fadeIn 2s ease-in-out forwards;
-  opacity: 0; /* Начинаем с прозрачности */
+  opacity: 0;
 }
 
-/* Навигация проектов слева сверху вертикально */
+/* === ЗАГОЛОВОК === */
+h1 {
+  font-family: 'Teko', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 3em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 0 0 10px white;
+  animation: fadeIn 2s ease-in-out;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+/* L PROSPEKT */
+.page-lprospekt h1 {
+  font-style: italic;
+}
+
+/* === НАВИГАЦИЯ === */
+.header-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .nav-projects {
   position: absolute;
   top: 90px;
@@ -19,57 +47,34 @@ body {
   flex-direction: column;
   gap: 10px;
 }
-
 .nav-projects a {
+  font-family: 'Antonio', sans-serif;
   font-size: 1.8em;
   font-weight: bold;
   color: #aaa;
   text-decoration: none;
   transition: 0.3s ease;
 }
-
 .nav-projects a:hover {
   color: white;
   text-shadow: 0 0 10px white;
 }
 
-/* Заголовок по центру */
-h1 {
-  font-family: 'Teko', sans-serif;
-  font-weight: 300;
-  font-style: italic;
-  font-size: 3em;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: white;
-  text-shadow: 0 0 10px white;
-  animation: fadeIn 2s ease-in-out;
-
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-}
-
-/* Центрированный контент */
+/* === КОНТЕНТ === */
 #overlay {
   position: absolute;
   z-index: 2;
-  top: 60%; /* подьем фото */
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   width: 100%;
   pointer-events: none;
 }
-
 #overlay img,
 #overlay .contact {
   pointer-events: auto;
 }
-
-/* Фото */
 #photo {
   width: 400px;
   margin-top: 5px;
@@ -77,31 +82,30 @@ h1 {
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
   max-width: 90%;
 }
-
-/* Email */
+ 
 .contact {
+  font-family: 'Antonio', sans-serif;
   margin-top: 20px;
   font-size: 1em;
   color: #aaa;
+  animation: fadeIn 2s ease-in-out forwards;
+  opacity: 0;
+  animation-delay: 0.5s;
 }
-
 .contact a {
   color: #888;
   text-decoration: none;
 }
-
 .contact a:hover {
   color: white;
   text-shadow: 0 0 10px white;
 }
-
-.contact {
-  animation: fadeIn 2s ease-in-out forwards;
-  opacity: 0;
-  animation-delay: 0.5s; /* Можно добавить задержку для плавности */
+.logo {
+  user-select: none;
+  cursor: default;
 }
-
 .copyright {
+  font-family: 'Antonio', sans-serif;
   font-size: 0.1em;
   color: #aaa;
   text-transform: uppercase;
@@ -109,37 +113,33 @@ h1 {
   letter-spacing: 0.05em;
 }
 
-/* Музыкальные ссылки справа снизу */
+/* === МУЗЫКАЛЬНЫЕ ССЫЛКИ === */
 .music-links {
   position: absolute;
   left: 80px;
-  bottom: 110px; /* приблизительно на уровне нижнего края фото */
+  bottom: 110px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-
 .music-link {
+  font-family: 'Antonio', sans-serif;
   font-size: 1.2em;
   color: #888;
   text-decoration: none;
   line-height: 1.1;
   white-space: nowrap;
   transition: color 0.3s ease;
+  animation: fadeIn 2s ease-in-out forwards;
+  opacity: 0;
+  animation-delay: 0.5s;
 }
-
 .music-link:hover {
   color: white;
   text-shadow: 0 0 10px white;
 }
 
-.music-link {
-  animation: fadeIn 2s ease-in-out forwards;
-  opacity: 0;
-  animation-delay: 0.5s; /* Можно добавить задержку для плавности */
-}
-
-/* Фоновый шум */
+/* === ФОНОВЫЙ ШУМ === */
 .noise {
   pointer-events: none;
   position: fixed;
@@ -150,48 +150,105 @@ h1 {
   z-index: 1;
 }
 
-/* Анимация */
+/* === АНИМАЦИЯ === */
 @keyframes fadeIn {
   to {
     opacity: 1;
   }
 }
-                                          /* Мобилка */
+/* === SEPIIA === */
+.page-sepiia h1.logo {
+  font-family: 'Lusitana', serif;
+}
+/* === MOVEL (светлая тема) === */
+.page-movel {
+  background: #fff;
+  color: #333;
+}
+.page-movel h1 {
+  color: #666;
+  font-weight: 1000;
+  text-shadow: 0 0 10px #666;
+}
+.page-movel .nav-projects a,
+.page-movel .contact,
+.page-movel .music-link,
+.page-movel .copyright {
+  color: #666;
+  text-shadow: none;
+}
+.page-movel .nav-projects a:hover,
+.page-movel .contact a:hover,
+.page-movel .music-link:hover {
+  color: #000;
+  text-shadow: 0 1px 2px #666;
+}
+
+/* === ТЕМНАЯ ТЕМА (по умолчанию) === */
+body:not(.page-movel) .nav-projects a,
+body:not(.page-movel) .contact,
+body:not(.page-movel) .music-link,
+body:not(.page-movel) .copyright {
+  color: #aaa;
+}
+body:not(.page-movel) .nav-projects a:hover,
+body:not(.page-movel) .contact a:hover,
+body:not(.page-movel) .music-link:hover {
+  color: white;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* === МОБИЛКА === */
 @media (max-width: 600px) {
   body {
     overflow: auto;
-    height: auto;
-  }
-
-  .nav-projects {
-    top: 20px;
-    left: 20px;
-  }
-
-  .nav-projects a {
-    font-size: 1.2em;
+    height: auto; /* чтобы не фиксировать высоту и дать прокрутку */
   }
 
   h1 {
-    font-size: 2em;
-    top: 10%;
-    transform: translate(-50%, -50%);
-    padding: 0 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 90vw;
+  order: -1; /* поднять вверх */
+  margin-bottom: 10px;
+}
+
+  .header-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  /* Сделаем #overlay позиционирование относительным, ширина по контенту и центрируем */
+.nav-projects {
+  order: 0;
+  margin-top: 0;
+}
+
+  h1 {
+    position: static; /* убираем absolute */
+    transform: none;
+    font-size: 2em;
+    top: auto;
+    left: auto;
+    margin: 20px auto 10px;
+    padding: 0 10px;
+    text-align: center;
+    max-width: 90vw;
+    white-space: normal;
+    text-shadow: 0 0 10px white;
+  }
+
+  .page-movel h1 {
+    color: #666;
+    text-shadow: 0 0 10px #666;
+    font-weight: 1000;
+  }
+
   #overlay {
-    position: relative;
+    position: relative; /* чтобы блок шел по потоку */
     top: auto;
     left: auto;
     transform: none;
     width: 90%;
     max-width: 320px;
-    margin: 0 auto;
+    margin: 0 auto 30px;
     text-align: center;
     pointer-events: auto;
   }
@@ -199,38 +256,118 @@ h1 {
   #photo {
     width: 100%;
     max-width: 320px;
-    margin-top: 10px;
+    height: auto;
+    margin: 0 auto 20px;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
   }
 
   .contact {
-    font-size: 0.9em;
-    margin-top: 15px;
+    font-size: 1em;
+    color: #aaa;
+    margin-top: 10px;
+    opacity: 1;
+    animation: none;
   }
+
+  .contact a {
+    color: #888;
+  }
+
+  .contact a:hover {
+    color: white;
+    text-shadow: 0 0 10px white;
+  }
+
+.nav-projects {
+  position: static;
+  display: flex;
+  flex-direction: row; /* в линию */
+  justify-content: center;
+  gap: 20px;
+  margin: 10px auto 20px;
+  flex-wrap: wrap; /* на всякий случай, если места мало */
+}
+.nav-projects a {
+  font-size: 1em;
+  color: #aaa;
+  text-decoration: none;
+}
+.nav-projects a:hover {
+  color: white;
+  text-shadow: 0 0 10px white;
+}
+
 
   .music-links {
     position: static;
-    margin: 20px auto 40px;
+    margin: 0 auto 40px;
     width: fit-content;
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    left: auto;
-    bottom: auto;
+    align-items: center;
+    gap: 10px;
   }
 
   .music-link {
     font-size: 1em;
-    line-height: 1.2;
+    color: #888;
+    text-decoration: none;
     white-space: normal;
+    text-align: center;
+    line-height: 1.2;
+    transition: color 0.3s ease;
+    opacity: 1;
+    animation: none;
+  }
+
+  .music-link:hover {
+    color: white;
+    text-shadow: 0 0 10px white;
   }
 
   .copyright {
     font-size: 0.7em;
-    margin-top: 5px;
-    color: #888;
+    color: #aaa;
     text-align: center;
+    margin: 0 0 20px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Если светлая тема MOVEL */
+  .page-movel {
+    background: #fff;
+    color: #333;
+  }
+
+  .page-movel .nav-projects a,
+  .page-movel .contact,
+  .page-movel .music-link,
+  .page-movel .copyright {
+    color: #666;
+    text-shadow: none;
+  }
+
+  .page-movel .nav-projects a:hover,
+  .page-movel .contact a:hover,
+  .page-movel .music-link:hover {
+    color: #000;
+    text-shadow: 0 1px 2px #666;
+  }
+
+  /* Фоновый шум и background */
+  .noise {
+    opacity: 0.06;
+  }
+
+  #background {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    position: relative;
-    bottom: -10px;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
   }
 }

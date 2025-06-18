@@ -53,16 +53,15 @@ function init() {
   geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
 
   // Загружаем текстуру для частиц (маленький диск)
-  const sprite = new THREE.TextureLoader().load('https://threejs.org/examples/textures/sprites/disc.png');
+  const sprite = new THREE.TextureLoader().load('js/disc.png');
 
   // Настройка материала для точек
   const material = new THREE.PointsMaterial({
-    size: 14,                     // размер шарика
+    size: 12,                     // размер шарика
     map: sprite,                  // текстура круга
-    transparent: false,
-    alphaTest: 0.5,
+    transparent: true,
     opacity: 1.0,                 // мягкость
-    depthWrite: true,           // отключаем отрисовку глубины
+    depthWrite: false,           // отключаем отрисовку глубины
     blending: THREE.AdditiveBlending, // свечение
     color: currentColor.clone()  // начальный общий цвет
   });
@@ -74,7 +73,7 @@ function init() {
   // Рендерер и добавление на страницу
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
+document.getElementById('background').appendChild(renderer.domElement);
 
   // Обработка ресайза окна
   window.addEventListener('resize', onWindowResize);
@@ -111,15 +110,15 @@ setInterval(() => {
   targetColor = getWarmColor();
 }, 5000);
 
-// Функция выбора одного из тёплых цветов кружков
+// Функция выбора одного из цветов кружков
 function getWarmColor() {
   const warmColors = [
-    new THREE.Color('#3a5f81'), // тёмно-синий с зеленью
-    new THREE.Color('#2a2e45'), // серо-синий
-    new THREE.Color('#4f87a2'), // голубовато-синий
-    new THREE.Color('#d88c6d'), // оранжево-терракотовый
-    new THREE.Color('#e6a14b'), // тусклый жёлто-оранжевый
-    new THREE.Color('#bfa46f'), // грязноватый жёлтый
+    new THREE.Color('#235196'), 
+    new THREE.Color('#FCA435'), 
+    new THREE.Color('#7EBDE6'), 
+    new THREE.Color('#F18723'), 
+    new THREE.Color('#133586'), 
+    new THREE.Color('#9CCEE4'), 
   ];
   return warmColors[Math.floor(Math.random() * warmColors.length)];
 }
