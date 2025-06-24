@@ -113,12 +113,12 @@ setInterval(() => {
 // Функция выбора одного из цветов кружков
 function getWarmColor() {
   const warmColors = [
-    new THREE.Color('#235196'), 
-    new THREE.Color('#FCA435'), 
-    new THREE.Color('#7EBDE6'), 
-    new THREE.Color('#F18723'), 
-    new THREE.Color('#133586'), 
-    new THREE.Color('#9CCEE4'), 
+    new THREE.Color('#2F4A53'), 
+    new THREE.Color('#CACFA2'), 
+    new THREE.Color('#A0C7AE'), 
+    new THREE.Color('#42616D'), 
+    new THREE.Color('#294350'), 
+    new THREE.Color('#3E5A65'), 
   ];
   return warmColors[Math.floor(Math.random() * warmColors.length)];
 }
