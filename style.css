@@ -168,7 +168,7 @@ h1 {
 .page-movel h1 {
   color: #666;
   font-weight: 1000;
-  text-shadow: 0 0 10px #666;
+  text-shadow: 0 0 2px #666;
 }
 .page-movel .nav-projects a,
 .page-movel .contact,
@@ -237,7 +237,7 @@ body:not(.page-movel) .music-link:hover {
 
   .page-movel h1 {
     color: #666;
-    text-shadow: 0 0 10px #666;
+    text-shadow: 0 0 2px #666;
     font-weight: 1000;
   }
 
