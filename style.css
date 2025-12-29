@@ -725,3 +725,12 @@ body:not(.page-movel) .music-link:hover {
     margin-top: 1px !important; /* ~1 см вертикального отступа */
   }
 }
+
+@media (max-width: 768px) {
+  #overlay {
+    pointer-events: none;
+  }
+  #overlay * {
+    pointer-events: auto;
+  }
+}

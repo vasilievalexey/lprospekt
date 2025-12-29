@@ -124,33 +124,68 @@ function getWarmColor() {
 }
 
 // ============================================
-// L PROSPEKT: клик по кастомной кнопке Play
+// L PROSPEKT: кастомный Play + автозавершение
 // ============================================
 document.addEventListener('DOMContentLoaded', function () {
   const wrapper = document.querySelector('.video-wrapper');
   if (!wrapper) return;
 
   const thumbnail = wrapper.querySelector('.video-thumbnail');
+  const playButton = wrapper.querySelector('.play-button');
   const iframe = wrapper.querySelector('iframe');
-  if (!thumbnail || !iframe) return;
 
-  const baseSrc = iframe.dataset.src || iframe.getAttribute('data-src');
-  if (!baseSrc) return;
+  if (!thumbnail || !playButton || !iframe) return;
 
-  thumbnail.addEventListener('click', function () {
-    // Показываем iframe и запускаем видео
+  // На всякий случай прячем iframe на старте
+  iframe.style.display = 'none';
+
+  // Примерная длительность видео (подгони под реальную длину клипа)
+  const VIDEO_DURATION_MS = 69000; // 69 секунд, как у тебя было
+  let resetTimer = null;
+
+  function resetVideo() {
+    // Останавливаем видео через YouTube API
+    try {
+      iframe.contentWindow.postMessage(
+        '{"event":"command","func":"stopVideo","args":""}',
+        '*'
+      );
+    } catch (e) {
+      // тихо проглатываем, если вдруг контент ещё не готов
+    }
+
+    // Снова показываем чёрный плейсхолдер
+    iframe.style.display = 'none';
+    thumbnail.style.display = 'flex';
+  }
+
+  function startVideo() {
+    // На всякий случай сброс старого таймера
+    if (resetTimer) {
+      clearTimeout(resetTimer);
+      resetTimer = null;
+    }
+
+    // Показываем iframe
     iframe.style.display = 'block';
-    iframe.src = baseSrc + (baseSrc.includes('?') ? '&' : '?') + 'autoplay=1';
     thumbnail.style.display = 'none';
 
-    // Примерная длительность видео в миллисекундах (поставь своё значение)
-    const VIDEO_DURATION_MS = 69000; // 80 секунд, подгони под длину клипа
+    // Командуем YouTube начать воспроизведение
+    iframe.contentWindow.postMessage(
+      '{"event":"command","func":"playVideo","args":""}',
+      '*'
+    );
 
-    // Через VIDEO_DURATION_MS возвращаемся к чёрному экрану с play
-    setTimeout(function () {
-      iframe.style.display = 'none';
-      iframe.src = ''; // сбросить, чтобы при следующем клике началось с начала
-      thumbnail.style.display = 'flex';
-    }, VIDEO_DURATION_MS);
+    // Через VIDEO_DURATION_MS возвращаемся к чёрному экрану
+    resetTimer = setTimeout(resetVideo, VIDEO_DURATION_MS);
+  }
+
+  // Один клик по чёрному экрану → сразу старт
+  thumbnail.addEventListener('click', startVideo);
+
+  // Чтобы клик по самой кнопке не всплывал странно
+  playButton.addEventListener('click', function (e) {
+    e.stopPropagation();
+    startVideo();
   });
 });
