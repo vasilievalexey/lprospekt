@@ -113,12 +113,44 @@ setInterval(() => {
 // Функция выбора одного из цветов кружков
 function getWarmColor() {
   const warmColors = [
-    new THREE.Color('#2F4A53'), 
-    new THREE.Color('#CACFA2'), 
-    new THREE.Color('#A0C7AE'), 
-    new THREE.Color('#42616D'), 
-    new THREE.Color('#294350'), 
-    new THREE.Color('#3E5A65'), 
+    new THREE.Color('#2F4A53'),
+    new THREE.Color('#CACFA2'),
+    new THREE.Color('#A0C7AE'),
+    new THREE.Color('#42616D'),
+    new THREE.Color('#294350'),
+    new THREE.Color('#3E5A65'),
   ];
   return warmColors[Math.floor(Math.random() * warmColors.length)];
 }
+
+// ============================================
+// L PROSPEKT: клик по кастомной кнопке Play
+// ============================================
+document.addEventListener('DOMContentLoaded', function () {
+  const wrapper = document.querySelector('.video-wrapper');
+  if (!wrapper) return;
+
+  const thumbnail = wrapper.querySelector('.video-thumbnail');
+  const iframe = wrapper.querySelector('iframe');
+  if (!thumbnail || !iframe) return;
+
+  const baseSrc = iframe.dataset.src || iframe.getAttribute('data-src');
+  if (!baseSrc) return;
+
+  thumbnail.addEventListener('click', function () {
+    // Показываем iframe и запускаем видео
+    iframe.style.display = 'block';
+    iframe.src = baseSrc + (baseSrc.includes('?') ? '&' : '?') + 'autoplay=1';
+    thumbnail.style.display = 'none';
+
+    // Примерная длительность видео в миллисекундах (поставь своё значение)
+    const VIDEO_DURATION_MS = 69000; // 80 секунд, подгони под длину клипа
+
+    // Через VIDEO_DURATION_MS возвращаемся к чёрному экрану с play
+    setTimeout(function () {
+      iframe.style.display = 'none';
+      iframe.src = ''; // сбросить, чтобы при следующем клике началось с начала
+      thumbnail.style.display = 'flex';
+    }, VIDEO_DURATION_MS);
+  });
+});

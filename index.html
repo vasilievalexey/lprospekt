@@ -78,33 +78,59 @@
 <link rel="manifest" href="/icons/lprospekt/site.webmanifest" />
 </head>
 <body class="page-lprospekt">
-  <!-- Фоновое видео, canvas или JS-анимация -->
   <div id="background"></div>
-<!-- Проекты -->
- <div class="header-block">
-  <h1 class="logo">L PROSPEKT</h1>
-<nav class="nav-projects">
-<a href="/sepiia/">SEPIIA</a>
-  <a href="/movel/">M O V E L</a>
-</nav>
-</div>
-<!-- Центрированный контент -->
-<div id="overlay">
-  <img id="photo" src="/img/L_PROSPEKT_2014_album.jpg" alt="Обложка альбома L PROSPEKT 2014" draggable="false" />
-  <p class="contact"><a href="mailto:contact@lprospekt.com">contact@lprospekt.com</a></p>
-  <p class="copyright">© 2025 L PROSPEKT. All rights reserved</p>
-</div>
 
-<!-- Музыкальные ссылки -->
-<div class="music-links">
-  <a class="music-link" href="https://music.apple.com/us/album/l-prospekt/1821912663" target="_blank" rel="noopener noreferrer">Apple Music</a>
-  <a class="music-link" href="https://open.spotify.com/album/7Kjhw8yuZWPoypLwbsDawG?si=sTnLUuXsQwuwBL-Y6Zj74Q" target="_blank" rel="noopener noreferrer">Spotify</a>
-  <a class="music-link" href="https://music.yandex.ru/album/37489164" target="_blank" rel="noopener noreferrer">Yandex Music</a>
-  <a class="music-link" href="https://lprospekt.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a>
-  <a class="music-link" href="https://vk.com/lprospekt" target="_blank" rel="noopener noreferrer">VK</a>
-</div>
+  <header class="header-block">
+    <h1 class="logo">L PROSPEKT</h1>
+    <nav class="nav-projects" aria-label="Other projects">
+      <a href="/sepiia/">SEPIIA</a>
+      <a href="/movel/">M O V E L</a>
+    </nav>
+  </header>
 
-  <!-- Фоновый шум -->
+  <main id="overlay">
+    <section class="hero">
+      <img id="photo" src="/img/L_PROSPEKT_2014_album.jpg" alt="L PROSPEKT 2014 album cover" draggable="false" />
+    </section>
+
+    <section class="music-links" aria-label="Streaming platforms">
+      <a class="music-link" href="https://music.apple.com/us/album/l-prospekt/1821912663" target="_blank" rel="noopener noreferrer">Apple Music</a>
+      <a class="music-link" href="https://open.spotify.com/album/7Kjhw8yuZWPoypLwbsDawG?si=sTnLUuXsQwuwBL-Y6Zj74Q" target="_blank" rel="noopener noreferrer">Spotify</a>
+      <a class="music-link" href="https://music.yandex.ru/album/37489164" target="_blank" rel="noopener noreferrer">Yandex Music</a>
+      <a class="music-link" href="https://lprospekt.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a>
+      <a class="music-link" href="https://vk.com/lprospekt" target="_blank" rel="noopener noreferrer">VK</a>
+    </section>
+
+<section id="video" class="video-section">
+  <h2 class="video-title"></h2>
+
+  <div class="video-wrapper">
+    <div class="video-thumbnail">
+      <button class="play-button"></button>
+    </div>
+
+    <iframe
+      data-src="https://www.youtube.com/embed/0qCXChk0Ka4?controls=0&modestbranding=1&rel=0&showinfo=0&fs=0&playsinline=1&iv_load_policy=3&playlist=0qCXChk0Ka4"
+      title="L PROSPEKT — Ветер"
+      frameborder="0"
+      allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  <div class="video-overlay-top"></div>
+</div>
+</section>
+
+
+
+
+
+    <footer class="site-footer">
+  <p class="footer-email">
+    <a href="mailto:contact@lprospekt.com">contact@lprospekt.com</a>
+  </p>
+  <p class="footer-copy">© 2026 L PROSPEKT. All rights reserved</p>
+</footer>
+
   <div class="noise"></div>
 
   <script src="/js/three.min.js"></script>

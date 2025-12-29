@@ -60,7 +60,6 @@
 <meta name="keywords" content="Coldwave, New Wave, Darkwave, Electropop, Synthpop" />
 <meta name="author" content="SEPIIA - Coldwave / Darkwave music from Saint Petersburg" />
 
-<!-- Open Graph (Facebook, Telegram, WhatsApp, VK и др.) -->
 <meta property="og:title" content="SEPIIA — Coldwave / Darkwave from Saint Petersburg" />
 <meta property="og:description" content="Saint Petersburg cold wave/new wave. Dark synths, melodic electropop. Est. 2014." />
 <meta property="og:image" content="https://lprospekt.com/img/sepiia_preview.jpg" />
@@ -68,50 +67,50 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SEPIIA" />
 
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="SEPIIA — Coldwave / Darkwave from Saint Petersburg" />
 <meta name="twitter:description" content="Saint Petersburg cold wave/new wave. Dark synths, melodic electropop. Est. 2014." />
 <meta name="twitter:image" content="https://lprospekt.com/img/sepiia_preview.jpg" />
 
-<!-- Favicon / Manifest -->
   <link rel="icon" href="/icons/sepiiaFavicon.ico" type="image/x-icon" />
 <link rel="apple-touch-icon" href="/icons/sepiia-apple-touch-icon.png" />
 <link rel="manifest" href="/icons/lprospekt/site.webmanifest" />
 </head>
 <body class="page-sepiia">
-  <!-- Фоновое видео, canvas или JS-анимация -->
   <div id="background"></div>
   <div id="threejs-background" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
-<!-- Проекты -->
-  <div class="header-block">
-    <h1 class="logo">SEPIIA</h1> 
-<nav class="nav-projects">
-  <a href="/">L PROSPEKT</a>
-<a href="/movel/">M O V E L</a>
-</nav>
-</div>
-<!-- Центрированный контент -->
-<div id="overlay">
-  <img id="photo" src="/img/2015 - For Gorgeous Lovers.jpeg" alt="2015 - For Gorgeous Lovers" draggable="false" />
-  <p class="contact"><a href="mailto:contact@lprospekt.com">contact@lprospekt.com</a></p>
-  <p class="copyright">© 2025 SEPIIA. All rights reserved</p>
-</div>
 
-<!-- Музыкальные ссылки -->
-<div class="music-links">
-  <a class="music-link" href="https://music.apple.com/us/album/for-gorgeous-lovers/1822411325" target="_blank" rel="noopener noreferrer">Apple Music</a>
-  <a class="music-link" href="https://open.spotify.com/album/2Rhjmu4rF3hb6GjAhK4Hpm?si=GmcdIl8URleGS4MxMuwyFw" target="_blank" rel="noopener noreferrer">Spotify</a>
-  <a class="music-link" href="https://music.yandex.ru/album/37489177" target="_blank" rel="noopener noreferrer">Yandex Music</a>
-  <a class="music-link" href="https://sepiia.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a>
-  <a class="music-link" href="https://vk.com/sepiia" target="_blank" rel="noopener noreferrer">VK</a>
-</div>
+  <header class="header-block">
+    <h1 class="logo">SEPIIA</h1>
+    <nav class="nav-projects" aria-label="Other projects">
+      <a href="/">L PROSPEKT</a>
+      <a href="/movel/">M O V E L</a>
+    </nav>
+  </header>
 
-<div class="noise"></div>
+  <main id="overlay">
+    <section class="hero">
+      <img id="photo" src="/img/2015 - For Gorgeous Lovers.jpeg" alt="SEPIIA - For Gorgeous Lovers album cover 2015" draggable="false" />
+    </section>
 
-<!-- Подключаем three.js и свой скрипт -->
-<script src="/js/three.min.js"></script>
-<script src="/js/script-sepiia.js"></script>
+    <section class="music-links" aria-label="Streaming platforms">
+      <a class="music-link" href="https://music.apple.com/us/album/for-gorgeous-lovers/1822411325" target="_blank" rel="noopener noreferrer">Apple Music</a>
+      <a class="music-link" href="https://open.spotify.com/album/2Rhjmu4rF3hb6GjAhK4Hpm?si=GmcdIl8URleGS4MxMuwyFw" target="_blank" rel="noopener noreferrer">Spotify</a>
+      <a class="music-link" href="https://music.yandex.ru/album/37489177" target="_blank" rel="noopener noreferrer">Yandex Music</a>
+      <a class="music-link" href="https://sepiia.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a>
+      <a class="music-link" href="https://vk.com/sepiia" target="_blank" rel="noopener noreferrer">VK</a>
+    </section>
 
+   <footer class="site-footer">
+  <p class="footer-email">
+    <a href="mailto:contact@lprospekt.com">contact@lprospekt.com</a>
+  </p>
+  <p class="footer-copy">© 2026 SEPIIA. All rights reserved</p>
+</footer>
+
+  <div class="noise"></div>
+
+  <script src="/js/three.min.js"></script>
+  <script src="/js/script-sepiia.js"></script>
 </body>
 </html>

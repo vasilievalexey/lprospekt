@@ -69,38 +69,37 @@ Twitter Card -->
 <link rel="manifest" href="/icons/lprospekt/site.webmanifest" />
 </head>
 <body class="page-movel">
-
-  <!-- Фоновое видео, canvas или JS-анимация -->
   <div id="background"></div>
 
-  <!-- Проекты -->
-     <div class="header-block">
-        <h1 class="logo">M O V E L</h1>
-  <nav class="nav-projects">
-  <a href="/">L PROSPEKT</a>
-<a href="/sepiia/">SEPIIA</a>
-  </nav>
-</div>
+  <header class="header-block">
+    <h1 class="logo">M O V E L</h1>
+    <nav class="nav-projects" aria-label="Other projects">
+      <a href="/">L PROSPEKT</a>
+      <a href="/sepiia/">SEPIIA</a>
+    </nav>
+  </header>
 
-  <!-- Контент -->
-  <div id="overlay">
-    <img id="photo" src="/img/movel_logo.jpg" alt="MOVEL Album Photo" draggable="false" />
-    <p class="contact"><a href="mailto:contact@lprospekt.com">contact@lprospekt.com</a></p>
-    <p class="copyright">© 2025 M O V E L. All rights reserved</p>
-  </div>
+  <main id="overlay">
+    <section class="hero">
+      <img id="photo" src="/img/movel_logo.jpg" alt="M O V E L album cover" draggable="false" />
+    </section>
 
-  <!-- Музыкальные ссылки -->
-  <div class="music-links">
-    <a class="music-link" href="https://music.apple.com/us/album/m-o-v-e-l/1821600025" target="_blank" rel="noopener noreferrer">Apple Music</a>
-    <a class="music-link" href="https://open.spotify.com/album/5rCL1t3s9V3XODlAkK6cK5?si=o60IPtczSju69b3zO1R18g" target="_blank" rel="noopener noreferrer">Spotify</a>
-    <a class="music-link" href="https://soundcloud.com/movelmusic" target="_blank" rel="noopener noreferrer">SoundCloud</a>
-    <a class="music-link" href="https://vk.com/movel" target="_blank" rel="noopener noreferrer">VK</a>
-  </div>
+    <section class="music-links" aria-label="Streaming platforms">
+      <a class="music-link" href="https://music.apple.com/us/album/m-o-v-e-l/1821600025" target="_blank" rel="noopener noreferrer">Apple Music</a>
+      <a class="music-link" href="https://open.spotify.com/album/5rCL1t3s9V3XODlAkK6cK5?si=o60IPtczSju69b3zO1R18g" target="_blank" rel="noopener noreferrer">Spotify</a>
+      <a class="music-link" href="https://soundcloud.com/movelmusic" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+      <a class="music-link" href="https://vk.com/movel" target="_blank" rel="noopener noreferrer">VK</a>
+    </section>
 
-  <!-- Фоновый шум -->
+   <footer class="site-footer">
+  <p class="footer-email">
+    <a href="mailto:contact@lprospekt.com">contact@lprospekt.com</a>
+  </p>
+  <p class="footer-copy">© 2026 M O V E L. All rights reserved</p>
+</footer>
+
   <div class="noise"></div>
 
-  <!-- Скрипты -->
   <script src="/js/three.min.js"></script>
   <script type="module" src="/js/script-movel.js"></script>
 </body>
