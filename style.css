@@ -1,6 +1,14 @@
-/* === GENERAL STYLES === */
-body {
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
@@ -10,7 +18,10 @@ body {
   opacity: 0;
 }
 
-/* === HEADING === */
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
 h1 {
   font-family: 'Teko', sans-serif;
   font-weight: 300;
@@ -21,42 +32,31 @@ h1 {
   color: white;
   text-shadow: 0 0 10px white;
   animation: fadeIn 2s ease-in-out;
-  margin: 0;
+  user-select: none;
+  cursor: default;
 }
 
-/* Desktop: Fixed logo */
-@media (min-width: 769px) {
-  h1 {
-    position: fixed;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-  }
-}
+/* ============================================
+   LAYOUT STRUCTURE
+   ============================================ */
 
-/* L PROSPEKT */
-.page-lprospekt h1 {
-  font-style: italic;
-  position: relative;
-  width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;  /* центрируем Лого и нав так же как на других страницах */
-    margin-top: 110px;     /* регулируй по вкусу: 35–50px */
-    z-index: 2;
-}
-
-.page-lprospekt #overlay {
-    margin: -6vh auto 40px;  /* было 20vh */
-  }
-
-/* === NAVIGATION === */
 .header-block {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+#overlay {
+  position: relative;
+  z-index: 2;
+  max-width: 430px;
+  margin: 20vh auto 40px;
+  text-align: center;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
 
 .nav-projects {
   position: fixed;
@@ -67,115 +67,25 @@ h1 {
   gap: 10px;
   z-index: 3;
 }
+
 .nav-projects a {
   font-family: 'Antonio', sans-serif;
   font-size: 1.8em;
   font-weight: bold;
   color: #aaa;
   text-decoration: none;
-  transition: 0.3s ease;
+  transition: color 0.3s ease;
 }
+
 .nav-projects a:hover {
   color: white;
   text-shadow: 0 0 10px white;
 }
 
-/* === CONTENT === */
-#overlay {
-  position: relative;
-  z-index: 2;
-  max-width: 430px;
-  margin: 20vh auto 40px;
-  text-align: center;
-  pointer-events: none;
-}
+/* ============================================
+   HERO SECTION
+   ============================================ */
 
-#overlay > * {
-  pointer-events: auto;
-}
-#photo {
-  width: 1300px;
-  margin-top: 25px;
-  border-radius: 10px;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
-  max-width: 95%;
-}
- 
-/* DESKTOP: фиксированный футер только на больших экранах */
-@media (min-width: 769px) {
-  .page-sepiia .site-footer,
-  .page-movel .site-footer {
-    position: fixed;
-    left: 50%;
-    bottom: 40px;
-    transform: translateX(-50%);
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    pointer-events: auto; /* чтобы email можно было кликать */
-    animation: fadeIn 2s ease-in-out forwards;
-    opacity: 0;
-    animation-delay: 0.5s;
-    z-index: 10;
-  }
-}
-
-
-  .page-lprospekt .site-footer {
-    position: static;      /* больше НЕ fixed */
-    transform: none;
-    bottom: auto;
-    text-align: center;
-    margin-top: 24px;
-    padding-bottom: 40px;
-    animation: fadeIn 2s ease-in-out forwards;
-    opacity: 0;
-    animation-delay: 0.5s;
-  }
-
-  .site-footer .footer-email,
-  .site-footer .footer-copy {
-    margin: 0;
-    line-height: 1.3; /* контролируем вертикальное расстояние */
-  }
-
-  .site-footer .footer-email a {
-    font-family: 'Antonio', sans-serif;
-    font-size: 0.95rem;
-    color: #888888;
-    text-decoration: none;
-  }
-
-  .site-footer .footer-email a:hover {
-    color: #fff;
-    text-shadow: none;
-  }
-
-  .page-movel .site-footer .footer-email a:hover {
-  color: #000;  /* чёрный при наведении */
- text-shadow:
-    0 0 4px rgba(0, 0, 0, 0.6),
-    0 0 8px rgba(0, 0, 0, 0.3); /* мягкое серое свечение */
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-  .site-footer .footer-copy {
-    font-family: 'Antonio', sans-serif;
-    font-size: 0.55rem;
-    color: #aaa;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-top: 10px;  /* ← ВОТ ЭТО расстояние между email и годом */
-    user-select: none;
-    cursor: default;
-  }
-
-.logo {
-  user-select: none;
-  cursor: default;
-}
-
-/* === SECTIONS === */
 .hero {
   width: 100%;
   display: flex;
@@ -183,18 +93,24 @@ h1 {
   align-items: center;
 }
 
-/* === MUSIC LINKS === */
+#photo {
+  width: 100%;
+  max-width: 430px;
+  margin-top: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================
+   MUSIC LINKS
+   ============================================ */
+
 .music-links {
-  position: fixed;
-  left: 80px;
-  bottom: 110px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  pointer-events: auto;
-  z-index: 3;
-  text-align: left;
 }
+
 .music-link {
   font-family: 'Antonio', sans-serif;
   font-size: 1.2em;
@@ -206,22 +122,23 @@ h1 {
   animation: fadeIn 2s ease-in-out forwards;
   opacity: 0;
   animation-delay: 0.5s;
-  cursor: pointer;
-  pointer-events: auto;
 }
+
 .music-link:hover {
   color: white;
   text-shadow: 0 0 10px white;
 }
 
-/* === VIDEO SECTION === */
+/* ============================================
+   VIDEO SECTION (L PROSPEKT only)
+   ============================================ */
+
 .video-section {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 40px 0;
-  pointer-events: auto;
 }
 
 .video-title {
@@ -237,7 +154,6 @@ h1 {
   animation-delay: 0.5s;
 }
 
-/* Контейнер для видео */
 .video-wrapper {
   position: relative;
   width: 100%;
@@ -252,7 +168,6 @@ h1 {
   animation-delay: 0.7s;
 }
 
-/* iframe скрыт до клика */
 .video-wrapper iframe {
   position: absolute;
   inset: 0;
@@ -263,7 +178,6 @@ h1 {
   z-index: 1;
 }
 
-/* Чёрный фон + кнопка play */
 .video-thumbnail {
   position: absolute;
   inset: 0;
@@ -272,6 +186,7 @@ h1 {
   justify-content: center;
   align-items: center;
   z-index: 20;
+  cursor: pointer;
 }
 
 .video-overlay-top {
@@ -279,14 +194,12 @@ h1 {
   top: 0;
   left: 0;
   width: 100%;
-  height: 52px;   /* можно подогнать: 48–60px */
+  height: 52px;
   background: #000;
-  z-index: 10;    /* над iframe, но под .video-thumbnail */
+  z-index: 10;
   pointer-events: none;
 }
 
-
-/* Кнопка PLAY (белый кружок) */
 .play-button {
   width: 70px;
   height: 70px;
@@ -295,7 +208,7 @@ h1 {
   cursor: pointer;
   position: relative;
   background: rgba(0, 0, 0, 0);
-  transition: 0.2s;
+  transition: transform 0.2s;
 }
 
 .play-button::after {
@@ -312,97 +225,246 @@ h1 {
   transform: scale(1.08);
 }
 
+/* ============================================
+   FOOTER
+   ============================================ */
 
+.site-footer {
+  text-align: center;
+  margin-top: 24px;
+  padding-bottom: 40px;
+  animation: fadeIn 2s ease-in-out forwards;
+  opacity: 0;
+  animation-delay: 0.5s;
+  z-index: 10;
+  position: relative;
+}
 
-/* === BACKGROUND === */
-#background {
+.footer-email,
+.footer-copy {
+  margin: 0;
+  line-height: 1.3;
+}
+
+.footer-email a {
+  font-family: 'Antonio', sans-serif;
+  font-size: 0.95rem;
+  color: #888888;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-email a:hover {
+  color: #fff;
+}
+
+.footer-copy {
+  font-family: 'Antonio', sans-serif;
+  font-size: 0.55rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 10px;
+  user-select: none;
+  cursor: default;
+}
+
+/* ============================================
+   BACKGROUND & EFFECTS
+   ============================================ */
+
+#background,
+#threejs-background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
-  pointer-events: none;
+  pointer-events: none !important;
 }
 
-/* === NOISE OVERLAY === */
+#background *,
+#threejs-background * {
+  pointer-events: none !important;
+}
+
 .noise {
-  pointer-events: none;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-image: url('https://grainy-gradients.vercel.app/noise.svg');
   opacity: 0.06;
   z-index: 1;
+  pointer-events: none;
 }
 
-/* === ANIMATIONS === */
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
 @keyframes fadeIn {
   to {
     opacity: 1;
   }
 }
-/* === SEPIIA === */
-.page-sepiia h1.logo {
+
+/* ============================================
+   PAGE-SPECIFIC: L PROSPEKT
+   ============================================ */
+
+.page-lprospekt h1 {
+  font-style: italic;
+}
+
+/* ============================================
+   PAGE-SPECIFIC: SEPIIA
+   ============================================ */
+
+.page-sepiia h1 {
   font-family: 'Lusitana', serif;
 }
 
-/* === MOVEL LIGHT THEME === */
+/* ============================================
+   PAGE-SPECIFIC: MOVEL (Light Theme)
+   ============================================ */
+
 .page-movel {
   background: #fff;
   color: #333;
 }
+
 .page-movel h1 {
   color: #666;
   font-weight: 1000;
   text-shadow: 0 0 2px #666;
 }
+
 .page-movel .nav-projects a,
-.page-movel .contact,
 .page-movel .music-link,
-.page-movel .copyright {
+.page-movel .footer-email a,
+.page-movel .footer-copy {
   color: #666;
   text-shadow: none;
 }
+
 .page-movel .nav-projects a:hover,
-.page-movel .contact a:hover,
 .page-movel .music-link:hover {
   color: #000;
   text-shadow: 0 1px 2px #666;
 }
 
-/* === DARK THEME (default) === */
-body:not(.page-movel) .nav-projects a,
-body:not(.page-movel) .contact,
-body:not(.page-movel) .music-link,
-body:not(.page-movel) .copyright {
-  color: #aaa;
-}
-body:not(.page-movel) .nav-projects a:hover,
-body:not(.page-movel) .contact a:hover,
-body:not(.page-movel) .music-link:hover {
-  color: white;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+.page-movel .footer-email a:hover {
+  color: #000;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.6), 0 0 8px rgba(0, 0, 0, 0.3);
 }
 
-/* === MOBILE STYLES === */
-/* БАЗА: под iPhone SE (то, что тебе нравится) */
+/* ============================================
+   DESKTOP STYLES
+   ============================================ */
+
+@media (min-width: 769px) {
+  /* Fixed logo */
+  h1 {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
+
+  /* Override for L PROSPEKT - keep logo in flow for scrolling */
+  .page-lprospekt h1 {
+    position: relative;
+    transform: none;
+    top: auto;
+    left: auto;
+    margin-top: 8vh;
+    margin-bottom: 0;
+  }
+  
+  .page-lprospekt #overlay {
+    margin-top: 0;
+  }
+
+  /* Fixed music links on desktop */
+  .music-links {
+    position: fixed;
+    left: 80px;
+    bottom: 110px;
+    z-index: 3;
+    text-align: left;
+  }
+
+  /* Fixed footer for SEPIIA and MOVEL */
+  .page-sepiia .site-footer,
+  .page-movel .site-footer {
+    position: fixed;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+  }
+
+  /* Prevent scrolling on SEPIIA and MOVEL desktop */
+  .page-sepiia,
+  .page-movel {
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  .page-sepiia #overlay,
+  .page-movel #overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  }
+
+  /* Music links should NOT be inside overlay positioning for SEPIIA/MOVEL */
+  .page-sepiia .music-links,
+  .page-movel .music-links {
+    position: fixed;
+    left: 80px;
+    bottom: 110px;
+  }
+}
+
+/* ============================================
+   TABLET (iPad)
+   ============================================ */
+
+@media (min-width: 769px) and (max-width: 1366px) and (orientation: portrait) {
+  .page-lprospekt #overlay {
+    margin-top: 1px;
+  }
+}
+
+/* ============================================
+   MOBILE BASE STYLES
+   ============================================ */
+
 @media (max-width: 768px) {
-  /* Base mobile layout */
   body {
-    overflow: auto;
-    height: auto;
     padding: 0 12px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
 
-  /* Top block: Header + Navigation */
+  /* SEPIIA and MOVEL should not stretch vertically on mobile */
+  body.page-sepiia,
+  body.page-movel {
+    min-height: auto;
+  }
+
+  /* Header */
   .header-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding-top: 45px;
     margin-bottom: 4px;
   }
@@ -411,42 +473,34 @@ body:not(.page-movel) .music-link:hover {
     position: static;
     transform: none;
     font-size: 1.8em;
-    top: auto;
-    left: auto;
     margin: 8px auto 4px;
-    padding: 0;
     text-align: center;
     max-width: 90vw;
-    white-space: normal;
-    text-shadow: 0 0 10px white;
   }
 
+  /* Navigation */
   .nav-projects {
     position: static;
-    display: flex;
     flex-direction: row;
     justify-content: center;
     margin: 0 auto 6px;
     gap: 25px;
-    flex-wrap: wrap;
+  }
+  
+  /* MOVEL specific nav spacing */
+  .page-movel .nav-projects {
+    margin: 0 auto 2px;
   }
 
   .nav-projects a {
     font-size: 0.9em;
-    color: #aaa;
-    text-decoration: none;
     padding: 6px 4px;
     min-height: 44px;
     display: flex;
     align-items: center;
   }
 
-  .nav-projects a:hover {
-    color: white;
-    text-shadow: 0 0 10px white;
-  }
-
-  /* Main content area */
+  /* Main content */
   #overlay {
     position: relative;
     top: auto;
@@ -457,33 +511,34 @@ body:not(.page-movel) .music-link:hover {
     margin: 0 auto;
     text-align: center;
     pointer-events: auto;
-    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* базовое поведение — как раньше, подходит для SE */
+    justify-content: flex-start;
+  }
+  
+  /* L PROSPEKT needs centering and flex expansion */
+  .page-lprospekt #overlay {
+    flex: 1;
+    justify-content: center;
   }
 
+  /* Hero */
   .hero {
-    margin-bottom: 12px;
+    margin-bottom: 0;
+    margin-top: 20px;
+    height: auto;
   }
 
   #photo {
-    width: 100%;
     max-width: 280px;
-    height: auto;
-    margin: 0 auto 12px;
-    display: block;
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+    margin: 0 auto 20px;
   }
 
   /* Music links */
   .music-links {
     position: static;
-    margin: 16px auto 8px;
-    width: 100%;
+    margin: 0 auto 8px;
     max-width: 280px;
-    display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
@@ -491,22 +546,12 @@ body:not(.page-movel) .music-link:hover {
 
   .music-link {
     font-size: 0.9em;
-    color: #888;
-    text-decoration: none;
-    white-space: normal;
     text-align: center;
     line-height: 1.2;
-    transition: color 0.3s ease;
     opacity: 1;
     animation: none;
     padding: 0.45em 10px;
     min-height: auto;
-    display: block;
-  }
-
-  .music-link:hover {
-    color: white;
-    text-shadow: 0 0 10px white;
   }
 
   /* Video section */
@@ -527,30 +572,6 @@ body:not(.page-movel) .music-link:hover {
     animation: none;
   }
 
-  /* Contact section */
-  .contact-info {
-    margin-bottom: 0;
-  }
-
-  .contact {
-    font-size: 0.9em;
-    color: #aaa;
-    margin-top: 8px;
-    margin-bottom: 0.45em;
-    opacity: 1;
-    animation: none;
-    word-break: break-word;
-  }
-
-  .contact a {
-    color: #888;
-  }
-
-  .contact a:hover {
-    color: white;
-    text-shadow: 0 0 10px white;
-  }
-
   /* Footer */
   .site-footer {
     position: static;
@@ -559,15 +580,72 @@ body:not(.page-movel) .music-link:hover {
     padding-bottom: 44px;
   }
 
-  .copyright {
+  .footer-copy {
     font-size: 0.65em;
-    color: #aaa;
-    text-align: center;
-    margin: 0;
-    letter-spacing: 0.05em;
   }
 
-  /* MOVEL - Light theme colors */
+  /* Page-specific mobile */
+  .page-lprospekt .header-block {
+    padding-top: 24px;
+    margin-bottom: 0;
+  }
+
+  .page-lprospekt h1 {
+    margin: 0 auto 6px;
+  }
+
+  .page-lprospekt .hero {
+    margin-bottom: 16px;
+  }
+
+  .page-lprospekt .site-footer {
+    padding-top: 0;
+    padding-bottom: 36px;
+  }
+  
+  /* L PROSPEKT nav to photo spacing */
+  .page-lprospekt .nav-projects {
+    margin: 4px auto 20px;
+  }
+
+  /* SEPIIA and MOVEL mobile - tight spacing */
+  .page-sepiia .hero {
+    margin-top: 65px;
+    margin-bottom: 0;
+  }
+  
+  .page-movel .hero {
+    margin-top: 40px;
+    margin-bottom: 0;
+  }
+
+  .page-sepiia #photo,
+  .page-movel #photo {
+    margin-bottom: 20px;
+  }
+
+  .page-sepiia .music-links {
+    margin-top: 20px;
+  }
+  
+  .page-movel .music-links {
+    margin-top: 115px;
+  }
+  
+  /* Push footer to bottom on tall screens */
+  body.page-sepiia,
+  body.page-movel {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  body.page-sepiia .site-footer,
+  body.page-movel .site-footer {
+    margin-top: auto;
+  }
+
+  /* MOVEL light theme mobile */
   .page-movel {
     background: #fff;
     color: #333;
@@ -580,120 +658,23 @@ body:not(.page-movel) .music-link:hover {
   }
 
   .page-movel .nav-projects a,
-  .page-movel .contact,
   .page-movel .music-link,
-  .page-movel .copyright {
+  .page-movel .footer-email a,
+  .page-movel .footer-copy {
     color: #666;
-    text-shadow: none;
   }
 
   .page-movel .nav-projects a:hover,
-  .page-movel .contact a:hover,
   .page-movel .music-link:hover {
     color: #000;
     text-shadow: 0 1px 2px #666;
   }
-
-  /* L PROSPEKT — как было, не трогаем особо */
-  .page-lprospekt .header-block {
-    padding-top: 24px;
-    margin-bottom: 0;
-  }
-
-  .page-lprospekt h1 {
-    margin: 0 auto 6px;
-  }
-
-  .page-lprospekt .nav-projects {
-    margin: 4px auto 80px;
-  }
-
-  .page-lprospekt .hero {
-    margin-bottom: 16px;
-  }
-
-  .page-lprospekt .contact-info {
-    margin-top: 16px;
-    margin-bottom: 0;
-  }
-
-  .page-lprospekt .contact {
-    margin: 0;
-    padding-bottom: 0.45em;
-  }
-
-  .page-lprospekt .site-footer {
-    padding-top: 0;
-    padding-bottom: 36px;
-  }
-
-  .page-lprospekt .copyright {
-    margin: 0;
-  }
-
-  /* Background noise and canvas */
-  .noise {
-    opacity: 0.06;
-  }
-
-  #background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-  }
 }
 
-/* ДОП. НАСТРОЙКА: все телефоны, КРОМЕ SE
-   (SE ~ 667px высота, тут min-height 700px) */
-@media (max-width: 768px) and (min-height: 700px) {
-  /* только MOVEL и SEPIIA правим */
+/* ============================================
+   MOBILE - SMALL SCREENS (iPhone SE)
+   ============================================ */
 
-  .page-movel #overlay,
-  .page-sepiia #overlay {
-    justify-content: flex-start;
-  }
-
-  /* NAV → PHOTO */
-  .page-movel .hero,
-  .page-sepiia .hero {
-    margin-top: 10px;
-    margin-bottom: 0;
-  }
-
-  /* PHOTO → MUSIC */
-  .page-movel #photo,
-  .page-sepiia #photo {
-    margin: 0 auto 10px;
-  }
-
-  /* MUSIC → CONTACT/FOOTER */
-  .page-movel .music-links,
-  .page-sepiia .music-links {
-    margin: 10px auto 22px;
-  }
-}
-
-  .page-movel #overlay,
-  .page-sepiia #overlay {
-    justify-content: flex-start;   /* вместо center → весь блок поднимется вверх */
-  }
-
-  /* расстояние от нав-линок до фото */
-  .page-movel .hero,
-  .page-sepiia .hero {
-    margin-top: 45px;                 /* 0 = максимально высоко; увеличишь → опустится */
-  }
-
-  .page-movel .music-links,
-  .page-sepiia .music-links {
-    margin-top: 60px; /* ← регулируешь ТОЛЬКО ЭТО число */
-  }
-
- /* iPhone SE и похожие маленькие экраны — ТОЛЬКО MOVEL и SEPIIA */
 @media (max-width: 380px) and (max-height: 700px) {
   body.page-movel,
   body.page-sepiia {
@@ -709,28 +690,24 @@ body:not(.page-movel) .music-link:hover {
 
   .page-movel .site-footer,
   .page-sepiia .site-footer {
-    position: static !important;
-    bottom: auto !important;
-    left: auto;
-    right: auto;
+    position: static;
     width: 100%;
     margin: 16px auto 12px;
-    text-align: center;
   }
 }
 
-/* iPad Air + iPad Pro — увеличиваем расстояние под хедером только на L PROSPEKT */
-@media (min-width: 769px) and (max-width: 1366px) and (orientation: portrait) {
-  body.page-lprospekt #overlay {
-    margin-top: 1px !important; /* ~1 см вертикального отступа */
-  }
-}
+/* ============================================
+   MOBILE - LARGE SCREENS (Fix for iPhone 16 Pro Max and similar)
+   ============================================ */
 
-@media (max-width: 768px) {
-  #overlay {
-    pointer-events: none;
+@media (max-width: 768px) and (min-height: 900px) {
+  body.page-sepiia {
+    overflow-y: auto;
   }
-  #overlay * {
-    pointer-events: auto;
+
+  .page-sepiia #overlay {
+    min-height: auto;
+    justify-content: flex-start;
+    padding-top: 0;
   }
 }

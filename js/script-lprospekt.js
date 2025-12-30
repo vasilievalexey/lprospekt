@@ -1,45 +1,43 @@
-// Инициализация базовых переменных
-let scene, camera, renderer, particles;
+// ============================================
+// THREE.JS PARTICLE ANIMATION
+// ============================================
 
-// Цвет всех точек — будет медленно меняться
-let currentColor = new THREE.Color(1, 0.5, 0.4); // начальный тёплый цвет
-let targetColor = getWarmColor(); 
+let scene, camera, renderer, particles;
+let currentColor = new THREE.Color(1, 0.5, 0.4);
+let targetColor = getWarmColor();
+
+// Ensure different colors
 while (targetColor.equals(currentColor)) {
-  targetColor = getWarmColor(); // избежать совпадения цветов
+  targetColor = getWarmColor();
 }
 
-// Переменные для вращения по движению мышки
+// Mouse tracking
 let mouseX = 0, mouseY = 0;
 let targetX = 0, targetY = 0;
 const windowHalf = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 
-// Слушаем движения мыши
 document.addEventListener('mousemove', (event) => {
   mouseX = event.clientX - windowHalf.x;
   mouseY = event.clientY - windowHalf.y;
 });
 
-// Запуск сцены
+// Initialize
 init();
 animate();
 
-// Функция инициализации сцены
 function init() {
-  // Создаём сцену и фон
   scene = new THREE.Scene();
-  const bgColor = 0x000000; // общий фон
+  const bgColor = 0x000000;
   scene.background = new THREE.Color(bgColor);
-  scene.fog = new THREE.Fog(bgColor, 200, 1000); // лёгкий туман
+  scene.fog = new THREE.Fog(bgColor, 200, 1000);
 
-  // Камера с перспективой
   camera = new THREE.PerspectiveCamera(
     75, window.innerWidth / window.innerHeight, 1, 1000
   );
   camera.position.z = 400;
 
-  // Генерация геометрии для точек
   const geometry = new THREE.BufferGeometry();
-  const count = 4000; // количество частиц
+  const count = 4000;
   const positions = [];
 
   for (let i = 0; i < count; i++) {
@@ -52,65 +50,53 @@ function init() {
 
   geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
 
-  // Загружаем текстуру для частиц (маленький диск)
   const sprite = new THREE.TextureLoader().load('js/disc.png');
 
-  // Настройка материала для точек
   const material = new THREE.PointsMaterial({
-    size: 12,                     // размер шарика
-    map: sprite,                  // текстура круга
+    size: 12,
+    map: sprite,
     transparent: true,
-    opacity: 1.0,                 // мягкость
-    depthWrite: false,           // отключаем отрисовку глубины
-    blending: THREE.AdditiveBlending, // свечение
-    color: currentColor.clone()  // начальный общий цвет
+    opacity: 1.0,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    color: currentColor.clone()
   });
 
-  // Объединяем геометрию и материал
   particles = new THREE.Points(geometry, material);
   scene.add(particles);
 
-  // Рендерер и добавление на страницу
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById('background').appendChild(renderer.domElement);
+  document.getElementById('background').appendChild(renderer.domElement);
 
-  // Обработка ресайза окна
   window.addEventListener('resize', onWindowResize);
 }
 
-// Обработка изменения размеров окна
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-// Главный цикл анимации
 function animate() {
   requestAnimationFrame(animate);
 
-  // Плавное вращение на основе мышки
   targetX = mouseX * 0.001;
   targetY = mouseY * 0.001;
 
   particles.rotation.y += 0.001 + (targetX - particles.rotation.y) * 0.05;
   particles.rotation.x += (targetY - particles.rotation.x) * 0.05;
 
-  // Плавный переход к целевому цвету
-  currentColor.lerp(targetColor, 0.03); //делает плавный переход между цветами. Чем выше параметр (от 0 до 1), тем быстрее он происходит
+  currentColor.lerp(targetColor, 0.03);
   particles.material.color.set(currentColor);
 
-  // Рендер сцены
   renderer.render(scene, camera);
 }
 
-// Каждые 5 секунд меняем целевой цвет
 setInterval(() => {
   targetColor = getWarmColor();
 }, 5000);
 
-// Функция выбора одного из цветов кружков
 function getWarmColor() {
   const warmColors = [
     new THREE.Color('#2F4A53'),
@@ -124,8 +110,9 @@ function getWarmColor() {
 }
 
 // ============================================
-// L PROSPEKT: кастомный Play + автозавершение
+// VIDEO PLAYER WITH FIXED THUMBNAIL ISSUE
 // ============================================
+
 document.addEventListener('DOMContentLoaded', function () {
   const wrapper = document.querySelector('.video-wrapper');
   if (!wrapper) return;
@@ -136,56 +123,87 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!thumbnail || !playButton || !iframe) return;
 
-  // На всякий случай прячем iframe на старте
+  // Hide iframe initially
   iframe.style.display = 'none';
 
-  // Примерная длительность видео (подгони под реальную длину клипа)
-  const VIDEO_DURATION_MS = 69000; // 69 секунд, как у тебя было
+  const VIDEO_DURATION_MS = 69300;
   let resetTimer = null;
+  let isPlaying = false;
+  let iframeLoaded = false;
 
   function resetVideo() {
-    // Останавливаем видео через YouTube API
+    if (!isPlaying) return;
+    
+    isPlaying = false;
+    
+    // Stop video and remove src to fully reset
     try {
       iframe.contentWindow.postMessage(
         '{"event":"command","func":"stopVideo","args":""}',
         '*'
       );
     } catch (e) {
-      // тихо проглатываем, если вдруг контент ещё не готов
+      console.warn('Could not stop video:', e);
     }
 
-    // Снова показываем чёрный плейсхолдер
-    iframe.style.display = 'none';
-    thumbnail.style.display = 'flex';
+    // Reset iframe
+    setTimeout(() => {
+      iframe.src = '';
+      iframe.style.display = 'none';
+      thumbnail.style.display = 'flex';
+      iframeLoaded = false;
+    }, 100);
   }
 
   function startVideo() {
-    // На всякий случай сброс старого таймера
+    if (isPlaying) return;
+    
+    isPlaying = true;
+
     if (resetTimer) {
       clearTimeout(resetTimer);
       resetTimer = null;
     }
 
-    // Показываем iframe
-    iframe.style.display = 'block';
+    // Hide thumbnail immediately
     thumbnail.style.display = 'none';
+    
+    // Load iframe if not already loaded
+    if (!iframeLoaded) {
+      const videoSrc = iframe.getAttribute('data-src');
+      iframe.src = videoSrc;
+      iframeLoaded = true;
+    }
+    
+    // Show iframe and it will autoplay
+    setTimeout(() => {
+      iframe.style.display = 'block';
+    }, 200);
 
-    // Командуем YouTube начать воспроизведение
-    iframe.contentWindow.postMessage(
-      '{"event":"command","func":"playVideo","args":""}',
-      '*'
-    );
-
-    // Через VIDEO_DURATION_MS возвращаемся к чёрному экрану
+    // Auto-reset after video duration
     resetTimer = setTimeout(resetVideo, VIDEO_DURATION_MS);
   }
 
-  // Один клик по чёрному экрану → сразу старт
+  // Click handlers
   thumbnail.addEventListener('click', startVideo);
-
-  // Чтобы клик по самой кнопке не всплывал странно
+  
   playButton.addEventListener('click', function (e) {
     e.stopPropagation();
     startVideo();
+  });
+
+  // Listen for YouTube player state changes
+  window.addEventListener('message', function(e) {
+    if (e.origin !== 'https://www.youtube.com') return;
+    
+    try {
+      const data = JSON.parse(e.data);
+      // If video ended (state 0), reset
+      if (data.event === 'onStateChange' && data.info === 0) {
+        resetVideo();
+      }
+    } catch (err) {
+      // Ignore parsing errors
+    }
   });
 });
