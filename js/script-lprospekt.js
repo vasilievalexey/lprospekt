@@ -110,7 +110,7 @@ function getWarmColor() {
 }
 
 // ============================================
-// VIDEO PLAYER WITH FIXED THUMBNAIL ISSUE
+// VIDEO PLAYER - FIXED FOR MOBILE & SAFARI
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -126,33 +126,31 @@ document.addEventListener('DOMContentLoaded', function () {
   // Hide iframe initially
   iframe.style.display = 'none';
 
-  const VIDEO_DURATION_MS = 69300;
+  const VIDEO_DURATION_MS = 69050; // Уменьшил на 700ms для мобильных
   let resetTimer = null;
   let isPlaying = false;
-  let iframeLoaded = false;
 
   function resetVideo() {
     if (!isPlaying) return;
     
     isPlaying = false;
     
-    // Stop video and remove src to fully reset
-    try {
-      iframe.contentWindow.postMessage(
-        '{"event":"command","func":"stopVideo","args":""}',
-        '*'
-      );
-    } catch (e) {
-      console.warn('Could not stop video:', e);
-    }
-
-    // Reset iframe
+    // МГНОВЕННОЕ скрытие без transitions
+    iframe.style.display = 'none';
+    thumbnail.style.display = 'flex';
+    
+    // Останавливаем видео после скрытия
     setTimeout(() => {
-      iframe.src = '';
-      iframe.style.display = 'none';
-      thumbnail.style.display = 'flex';
-      iframeLoaded = false;
-    }, 100);
+      try {
+        iframe.contentWindow.postMessage(
+          '{"event":"command","func":"stopVideo","args":""}',
+          '*'
+        );
+        iframe.src = '';
+      } catch (e) {
+        console.warn('Could not stop video:', e);
+      }
+    }, 300);
   }
 
   function startVideo() {
@@ -165,14 +163,13 @@ document.addEventListener('DOMContentLoaded', function () {
       resetTimer = null;
     }
 
-    // Hide thumbnail immediately
+    // Hide thumbnail first
     thumbnail.style.display = 'none';
     
     // Load iframe if not already loaded
-    if (!iframeLoaded) {
+    if (!iframe.src || iframe.src === '') {
       const videoSrc = iframe.getAttribute('data-src');
       iframe.src = videoSrc;
-      iframeLoaded = true;
     }
     
     // Show iframe and it will autoplay
