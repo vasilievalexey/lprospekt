@@ -1,0 +1,10 @@
+# Редирект с WWW на без WWW
+https://www.lprospekt.com/*  https://lprospekt.com/:splat  301!
+http://www.lprospekt.com/*  https://lprospekt.com/:splat  301!
+
+# Редирект с HTTP на HTTPS
+http://lprospekt.com/*  https://lprospekt.com/:splat  301!
+
+# Добавление trailing slash для страниц
+/sepiia  /sepiia/  301!
+/movel  /movel/  301!
