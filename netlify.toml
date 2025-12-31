@@ -17,19 +17,16 @@
   from = "http://lprospekt.com/*"
   to = "https://lprospekt.com/:splat"
   status = 301
-  force = true
+  force = false
 
 [[redirects]]
   from = "/sepiia"
   to = "/sepiia/"
   status = 301
+  force = false
 
 [[redirects]]
   from = "/movel"
   to = "/movel/"
   status = 301
-
-# Настройки сборки (опционально)
-[build]
-  publish = "."
-  command = "echo 'No build command'"
+  force = false
