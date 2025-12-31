@@ -1,32 +1,3 @@
 # Netlify configuration file
-
-# Редиректы
-[[redirects]]
-  from = "https://www.lprospekt.com/*"
-  to = "https://lprospekt.com/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "http://www.lprospekt.com/*"
-  to = "https://lprospekt.com/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "http://lprospekt.com/*"
-  to = "https://lprospekt.com/:splat"
-  status = 301
-  force = false
-
-[[redirects]]
-  from = "/sepiia"
-  to = "/sepiia/"
-  status = 301
-  force = false
-
-[[redirects]]
-  from = "/movel"
-  to = "/movel/"
-  status = 301
-  force = false
+[build]
+  publish = "."
