@@ -1,25 +1,142 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Страница не найдена</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — No signal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Antonio&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: sans-serif;
-      background-color: #0f0f0f;
-      color: #fff;
-      text-align: center;
-      padding: 5em;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    a {
-      color: #00ffff;
+
+    body {
+      font-family: 'Teko', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Noise overlay - как на вашем сайте */
+    .noise {
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      right: -50%;
+      bottom: -50%;
+      width: 200%;
+      height: 200vh;
+      background: transparent url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=') repeat;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 600px;
+      padding: 2rem;
+    }
+
+    .error-code {
+      font-family: 'Antonio', sans-serif;
+      font-size: clamp(8rem, 20vw, 15rem);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: #fff;
+      margin-bottom: 2rem;
+      line-height: 0.9;
+    }
+
+    .error-message {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 4rem;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .link {
+      display: inline-block;
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #fff;
+      transition: width 0.3s ease;
+    }
+
+    .link:hover {
+      color: #fff;
+    }
+
+    .link:hover::after {
+      width: 100%;
+    }
+
+    .divider {
+      width: 100px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 2rem auto;
+    }
+
+    @media (max-width: 600px) {
+      .error-code {
+        margin-bottom: 1rem;
+      }
+      
+      .error-message {
+        margin-bottom: 3rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>404 — Страница не найдена</h1>
-  <p>Кажется, вы попали не туда...</p>
-  <p><a href="/">Вернуться на главную</a></p>
+  <div class="noise"></div>
+  
+  <div class="container">
+    <div class="error-code">404</div>
+    <div class="error-message">Page not found</div>
+    
+    <div class="divider"></div>
+    
+    <div class="links">
+      <a href="/" class="link">L PROSPEKT</a>
+      <a href="/sepiia/" class="link">SEPIIA</a>
+      <a href="/movel/" class="link">M O V E L</a>
+    </div>
+  </div>
 </body>
 </html>
