@@ -1,2 +1,6 @@
+# Redirect WWW versions to non-WWW for all pages
+https://www.lprospekt.com/*   https://lprospekt.com/:splat   301!
+
+# Add trailing slash
 /sepiia   /sepiia/   301
 /movel    /movel/    301
