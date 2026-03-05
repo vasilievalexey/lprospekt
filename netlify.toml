@@ -1,3 +1,25 @@
 # Netlify configuration file
 [build]
   publish = "."
+
+# Force HTTP/1.1 for better Russia compatibility
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Alt-Svc = "clear"
+    
+# Cache static assets
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
